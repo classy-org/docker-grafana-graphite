@@ -7,6 +7,7 @@ FROM     ubuntu:14.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install all prerequisites
+RUN     apt-get -y update
 RUN     apt-get -y install software-properties-common
 RUN     add-apt-repository -y ppa:chris-lea/node.js
 RUN     apt-get -y update
@@ -14,7 +15,8 @@ RUN     apt-get -y install python-django-tagging python-simplejson python-memcac
                            python-pip gunicorn supervisor nginx-light nodejs git wget curl openjdk-7-jre build-essential python-dev
 
 RUN     pip install Twisted==11.1.0 Django==1.5 pytz
-RUN     npm install ini chokidar
+RUN     npm install ini
+RUN     npm install chokidar
 
 # Checkout the stable branches of Graphite, Carbon and Whisper and install from there
 RUN     mkdir /src
